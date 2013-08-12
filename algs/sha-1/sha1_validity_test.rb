@@ -4,7 +4,7 @@ def sha_test(request, validation)
 
 	salt = "sodiumchloride"
 	salted_req = request+salt
-	hash = Digest::SHA1.hexdigest salted_req
+	hash = Digest::SHA1.hexdigest(salted_req)
 	
 	if hash == validation
 		puts "\nRequest is valid.\n"
@@ -14,4 +14,4 @@ def sha_test(request, validation)
 
 end
 
-sha_test("DEVELOPER ANARCHY","cffg06d2d7e6c19cf392c87663b6c86d01e722c46")
+sha_test(ARGV[0],ARGV[1])

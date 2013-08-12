@@ -7,4 +7,6 @@ def sha1(src)
 	puts "\nOriginal:#{src}\nSalted:#{salted_src}\nHash:#{hash}"
 end
 
-sha1("DEVELOPER ANARCHY")
+ARGV.each do |arg|
+	sha1(arg)
+end
