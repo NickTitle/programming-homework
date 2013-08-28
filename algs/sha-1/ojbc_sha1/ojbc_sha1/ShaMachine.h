@@ -12,6 +12,7 @@
 @interface ShaMachine : NSObject
 
 +(NSString *)sha1:(NSString *)src;
++(NSString *)sha1RandSalt:(NSString *)src;
 +(NSString *)sha1ValidityTest:(NSString *)src andHash:(NSString *)hash;
 
 @end
