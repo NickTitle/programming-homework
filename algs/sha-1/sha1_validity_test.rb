@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 def sha_test(request, validation)
 
-	salt = "sodiumchloride"
+	salt = "6100684ae71c788c64adf491743600911e0c0ba0"
 	salted_req = request+salt
 	hash = Digest::SHA1.hexdigest(salted_req)
 	
