@@ -30,6 +30,24 @@
     return hash;
 }
 
++(NSString *)sha1RandSalt:(NSString *)src {
+    
+    NSString *randSalt = [NSString stringWithFormat:@"%i", arc4random_uniform(INT_MAX)];
+    src = [NSString stringWithFormat:@"%@%@", src, randSalt];
+    
+    NSData *data = [src dataUsingEncoding:NSUTF8StringEncoding];
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(data.bytes, [data length], digest);
+    NSMutableString *hash = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02x", digest[i]];
+    }
+    
+    
+    
+    return hash;
+}
+
 +(NSString *)sha1ValidityTest:(NSString *)src andHash:(NSString *)validation {
     src = [NSString stringWithFormat:@"%@%@", src, salt];
     
